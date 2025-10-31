@@ -7,9 +7,18 @@ vim.opt.softtabstop=4
 vim.opt.shiftwidth=4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
-vim.cmd.colorscheme("desert")
+-- Use ripgrep for :grep and :vimgrep commands
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.grepformat = "%f:%l:%c:%m"
+
 vim.keymap.set("n", "<leader>pv", ":Vex<CR>", {noremap = true, silent = true, desc = "Opens a new vertical explorer of current file"}) 
-vim.keymap.set("n", "<leader><CR>", ":so ~/.config/nvim/init.lua<CR>", { desc = "Source the file"})
+vim.keymap.set("n", "<leader><CR>", ":so ~/.config/nvim/init.lua<CR>", { desc = "Source the file"})-- doesn't work with lazy
+
+vim.keymap.set("n", "<C-p>", ":GFiles<CR>", {desc = "Opens GFiles from fzf"})
+vim.keymap.set("n", "<leader>pf", ":Files<CR>", {desc = "Opens Files from fzf"})
+
+vim.keymap.set("n", "<C-j>", ":cnext<CR>", {desc = "next item in quickfix list"})
+vim.keymap.set("n", "<C-k>", ":cprev<CR>", {desc = "previous item in quickfix list"})
 
 -- moving a line of code down or up
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down"})
@@ -43,5 +52,9 @@ require("lazy").setup({
      "junegunn/fzf.vim",
      dependencies = { "junegunn/fzf" }
  },
+ {
+     { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
+ },
 })
 
+vim.cmd.colorscheme("catppuccin-mocha")
