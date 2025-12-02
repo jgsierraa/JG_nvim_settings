@@ -12,21 +12,25 @@ vim.opt.grepprg = "rg --vimgrep"
 vim.opt.grepformat = "%f:%l:%c:%m"
 
 vim.keymap.set("n", "<leader>pv", ":Vex<CR>", {noremap = true, silent = true, desc = "Opens a new vertical explorer of current file"}) 
-vim.keymap.set("n", "<leader><CR>", ":so ~/.config/nvim/init.lua<CR>", { desc = "Source the file"})-- doesn't work with lazy
 
 vim.keymap.set("n", "<C-p>", ":GFiles<CR>", {desc = "Opens GFiles from fzf"})
 vim.keymap.set("n", "<leader>pf", ":Files<CR>", {desc = "Opens Files from fzf"})
 
 vim.keymap.set("n", "<C-j>", ":cnext<CR>", {desc = "next item in quickfix list"})
 vim.keymap.set("n", "<C-k>", ":cprev<CR>", {desc = "previous item in quickfix list"})
+vim.keymap.set("n", "<leader>j", "10j", {desc = "descend 10"})
+vim.keymap.set("n", "<leader>k", "10k", {desc = "up 10"})
 
 -- moving a line of code down or up
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down"})
 vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up"})
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move line down"})
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move line up"})
 
-vim.keymap.set("v", "<A-j>", ":m .+2<CR>gv=gv", { desc = "Move line down"})
-vim.keymap.set("v", "<A-k>", ":m .-2<CR>gv=gv", { desc = "Move line up"})
-
+vim.keymap.set("n", "<leader>y", '"+y', { desc = "gets ready to yank to register +"})
+vim.keymap.set("v", "<leader>y", '"+y', { desc = "yank to register +"})
+vim.keymap.set("n", "<leader>Y", 'gg"+yG', { desc = "yanks file"})
+vim.keymap.set("v", "<leader>p", '"_dP', { desc = "paste data deleting selection without losing yank"})
 
 -- Bootstrap lazy.nvim if it's not already installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
