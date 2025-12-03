@@ -1,7 +1,19 @@
-vim.opt.scrolloff = 8
 vim.g.mapleader = " "
+vim.opt.scrolloff = 8
 vim.wo.relativenumber = true
 vim.opt.number = true
+
+-- kickstart configuration that i liked 
+vim.opt.breakindent = true
+vim.opt.undofile = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
+-- time of macro to execute
+vim.o.timeoutlen = 300
+-- Keep signcolumn on by default
+vim.o.signcolumn = 'yes'
+-- end kickstart configuration
+
 vim.opt.tabstop=4 
 vim.opt.softtabstop=4
 vim.opt.shiftwidth=4
@@ -10,7 +22,6 @@ vim.opt.smartindent = true
 -- Use ripgrep for :grep and :vimgrep commands
 vim.opt.grepprg = "rg --vimgrep"
 vim.opt.grepformat = "%f:%l:%c:%m"
-
 vim.keymap.set("n", "<leader>pv", ":Vex<CR>", {noremap = true, silent = true, desc = "Opens a new vertical explorer of current file"}) 
 
 vim.keymap.set("n", "<C-p>", ":GFiles<CR>", {desc = "Opens GFiles from fzf"})
